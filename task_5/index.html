@@ -48,6 +48,20 @@ tr#allFile {
 li {
     margin-top:5px;
 }
+.product{
+  background-color: #83cb65;
+  color:white;
+}
+.company_info{
+  background-color: #1a7bdb;
+  color:white;
+}
+.ir_info{
+  background-color: #e07469;
+  color:white;
+}
+
+
 </style>
 </head>
 <body>
@@ -59,36 +73,40 @@ li {
   </div>
 </header>
 <main class="container">
-  <h1>ファイル管理一覧</h1>
-  <h2>全てのフォルダとアクセス権を表示</h2>
+  <h1>Cybozu News</h1>
+  <h2>最新のニュース</h2>
   <table>
     <tr id="allFile">
       <td>日付</td>
       <td>カテゴリ</td>
-      <td>内容</td>
-      
+      <td>内容</td>     
     </tr>
     <tr>
-      <td id="f001-folderName"></td>
-      <td id="f001-viewAuth"></td>
-      <td id="f001-editAuth"></td>
-      <td id="f001-deleteAuth"></td>
+      <td id="1-day"></td>
+      <td id="1-category"></td>
+      <td><a id="1-content" href=""></a></td>
     </tr>
     <tr>
-      <td id="f002-folderName"></td>
-      <td id="f002-viewAuth"></td>
-      <td id="f002-editAuth"></td>
-      <td id="f002-deleteAuth"></td>
+      <td id="2-day"></td>
+      <td id="2-category"></td>
+      <td><a id="2-content" href=""></a></td>
     </tr>
     <tr>
-      <td id="f003-folderName"></td>
-      <td id="f003-viewAuth"></td>
-      <td id="f003-editAuth"></td>
-      <td id="f003-deleteAuth"></td>
+      <td id="3-day"></td>
+      <td id="3-category"></td>
+      <td><a id="3-content" href=""></a></td>
+    </tr>
+    <tr>
+      <td id="4-day"></td>
+      <td id="4-category"></td>
+      <td><a id="4-content" href=""></a></td>
+    </tr>
+    <tr>
+      <td id="5-day"></td>
+      <td id="5-category"></td>
+      <td><a id="5-content" href=""></a></td>
     </tr>
 </table>
-<h2>閲覧権限が全員にあるフォルダ</h2>
-<ul id="list"></ul>
 </main>
 <script>
 
