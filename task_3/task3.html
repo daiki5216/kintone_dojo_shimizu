@@ -111,10 +111,11 @@ li {
     },
 };
 
-//console.log(fileManage)
+console.log(fileManage)
 const nums =Object.keys(fileManage) //f001,f002・・
 nums.forEach((num) => { //1つずつ取り出す
   const keys = Object.keys(fileManage[num]) //keyだけ取り出す
+  console.log(keys)
   keys.forEach((value) =>{ //()の中は何を取り出したいか
   document.getElementById(num+'-'+value).textContent=fileManage[num][value]
   
