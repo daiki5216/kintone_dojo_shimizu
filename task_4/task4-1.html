@@ -51,31 +51,46 @@ header h2 {
   <h3>月額金額：<span id="price">3900</span>円</h3>
 </main>
 <script>
-  const result = Number(document.getElementById('price').textContent);
+  //54行目:h3タグ内の3900を取得し代入、55行目：セキュアオプションの値段250*5の1250を代入、56行目:ディスク増設料として1000を代入
+  const result = Number(document.getElementById('price').textContent); 
   const secure = 1250
   const upDisc = 1000
 
+  //チェックボックスを取得。checks[0]がセキュアオプションに対するチェック,check[1]がディスク増設に対するチェック
   const checks = document.getElementsByClassName("chk");
   
+  //チェックの有無に応じて計算結果を返す。もっと共通化できそうな気がするのですが、どうすれば良いのか思いつきませんでした..。
+  //どうやったらもっとスマートにできるか教えていただきたいです.
   function calcAmount(result,secure,upDisc){
+
+    //チェックがセキュアオプションに対してのみ入っている場合
     if(checks[0].checked && !checks[1].checked){
       return result+=secure
     }
+
+    //チェックがディスク増設に対してのみ入っている場合
     else if(!checks[0].checked && checks[1].checked){
       return result+=upDisc
     }
+
+    //チェックがセキュアオプション、ディスク増設の両方に入っている場合
     else if (checks[0].checked&&checks[1].checked){
       return result+=secure+upDisc
     }
+
+    //チェックが入っていない場合
     else{
       return result
     }
   }
-
+  
+  //セキュアオプション用のチェックボックスが押された時に動作する
   checks[0].onclick = function() {
     const calc = calcAmount(result,secure,upDisc)
     document.getElementById('price').textContent = calc
   }
+
+  //ディスク増設用のチェックボックスが押された時に動作する
   checks[1].onclick = function() {
     const calc = calcAmount(result,secure,upDisc)
     document.getElementById('price').textContent = calc
