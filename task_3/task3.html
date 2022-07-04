@@ -111,12 +111,11 @@ li {
     },
 };
 
-console.log(fileManage)
 const nums =Object.keys(fileManage) //f001,f002・・
 nums.forEach((num) => { //1つずつ取り出す
   const keys = Object.keys(fileManage[num]) //keyだけ取り出す
-  keys.forEach((value) =>{ //()の中は何を取り出したいか
-  document.getElementById(num+'-'+value).textContent=fileManage[num][value]
+  keys.forEach((key) =>{ //()の中は何を取り出したいか
+  document.getElementById(num+'-'+key).textContent=fileManage[num][key]
   
   if (value==='viewAuth'&&fileManage[num][value]==='Everyone'){
     const list=document.getElementById('list')
