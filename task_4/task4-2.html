@@ -67,45 +67,41 @@ header h2 {
   <button id="btn">計算</button>
 </main>
 <script>
-  //71行目:h3タグ内の3900を取得し代入、72行目：セキュアオプションの単価の250を代入、73行目:ディスク増設量として1000を代入
-  const result = Number(document.getElementById('price').textContent);
-  const secure = 250
-  const upDisc = 1000
+  const standardPrice = Number(document.getElementById('price').textContent);
+  const options = {
+    'secure':250,
+    'upDisc':1000
+  }
 
-  //チェックボックスを取得。checks[0]がセキュアオプションに対するチェック,check[1]がディスク増設に対するチェック
-  const checks = document.getElementsByClassName("chk");
-  
-  //ブルダウンのインデックス番号を取得する関数
-  const getIndex=(index)=>{
+  const getDropdownIndexNumber=(index)=>{
     const getIndex = document.getElementsByClassName('slct')[index].selectedIndex+1;
-    return getIndex
+    return getIndex //プルダウンのインデックス番号を返す
   };
   
-  //getindex()で取得したインデックス番号と、各チェックボックスに対するチェックの有無で条件分岐し、金額計算
-  const calcAmount=() =>{
-    let calc =0
+  const totalPrice =(options) =>{
+    const checks = document.getElementsByClassName("chk");
+    let addPrice =0 //追加料金の0円とする
+
     if(checks[0].checked && !checks[1].checked){
-      const i_0= getIndex(0);
-      calc = secure*i_0
+      const i_0= getDropdownIndexNumber(0);
+      addPrice = options['secure']*i_0
     }
     else if(!checks[0].checked && checks[1].checked){
-      const i_1= getIndex(1);
-      calc = upDisc*i_1
+      const i_1= getDropdownIndexNumber(1);
+      addPrice = options['upDisc']*i_1
     }
     else if (checks[0].checked&&checks[1].checked){
-      const i_0= getIndex(0);
-      const i_1= getIndex(1);
-      calc = (secure*i_0)+(upDisc*i_1)
+      const i_0= getDropdownIndexNumber(0);
+      const i_1= getDropdownIndexNumber(1);
+      addPrice = (options['secure']*i_0)+(options['upDisc']*i_1)
     }
-    return result+calc
+    return standardPrice+addPrice
   };
-
-  //計算ボタンを取得    
+ 
   const btn =document.getElementById('btn')
-
   //計算ボタンを押した時に、calcAmountを動作させる
   btn.onclick = function(){
-    const amout = calcAmount();
+    const amout = totalPrice(options);
     document.getElementById('price').textContent=amout
     
   }

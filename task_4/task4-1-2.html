@@ -52,34 +52,37 @@ header h2 {
 </main>
 <script>
   const standardPrice = Number(document.getElementById('price').textContent); 
-  const options = {
-    'secure':1250,
-    'upDisc':1000
-  }
+  const checks = document.getElementsByClassName("chk");
 
-  const totalPrice = (standardPrice,options)=>{
+  const getTotalPrice=(obj) =>{
     const checks = document.getElementsByClassName("chk");
-    
-    if(checks[0].checked && !checks[1].checked){
-      return standardPrice+=options['secure']
-    }else if(!checks[0].checked && checks[1].checked){
-        return standardPrice+=options['upDisc']
-    }else if (checks[0].checked&&checks[1].checked){
-      return standardPrice+=options['secure']+options['upDisc']
-    }
-    return standardPrice  
-  }
 
-  const getTotalPrice = () =>{
-    const checks = document.getElementsByClassName("chk");
     Array.prototype.forEach.call(checks, (check,index)=>{
-      checks[index].onclick = function() {
-        const calc = totalPrice(result,options)
-        document.getElementById('price').textContent = calc
-      }        
+        if (check.checked){
+          return standardPrice+=10  
+        }
+        else{
+            return standardPrice+=100
+        }
+        
     });   
+
   }
-  getTotalPrice();
+  checks[0].onclick = function() {
+    const calc = getTotalPrice();
+    document.getElementById('price').textContent = calc
+  }
+
+  //ディスク増設用のチェックボックスが押された時に動作する
+  checks[1].onclick = function() {
+    const calc = getTotalPrice();
+    document.getElementById('price').textContent = calc
+  }
+  
+
+
+  
+  
 
 </script>
 </body>
