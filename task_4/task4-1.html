@@ -56,30 +56,26 @@ header h2 {
     'secure':1250,
     'upDisc':1000
   }
+  const checks = document.getElementsByClassName("chk");
 
-  const totalPrice = (standardPrice,options)=>{
-    const checks = document.getElementsByClassName("chk");
-    
-    if(checks[0].checked && !checks[1].checked){
-      return standardPrice+=options['secure']
-    }else if(!checks[0].checked && checks[1].checked){
-        return standardPrice+=options['upDisc']
-    }else if (checks[0].checked&&checks[1].checked){
-      return standardPrice+=options['secure']+options['upDisc']
+  const getTotalPrice = (checks,standardPrice,options)=>{   
+    if(checks[0].checked){
+      standardPrice+=options['secure']
+    }
+    if(checks[1].checked){
+      standardPrice+=options['upDisc']
     }
     return standardPrice  
   }
-
-  const getTotalPrice = () =>{
-    const checks = document.getElementsByClassName("chk");
-    Array.prototype.forEach.call(checks, (check,index)=>{
-      checks[index].onclick = function() {
-        const calc = totalPrice(result,options)
-        document.getElementById('price').textContent = calc
-      }        
-    });   
-  }
-  getTotalPrice();
+  checks[0].onclick = function() {
+      const totalValue =getTotalPrice(checks,standardPrice,options)
+      document.getElementById('price').textContent = totalValue
+  } 
+  checks[1].onclick = function() {
+      const totalValue =getTotalPrice(checks,standardPrice,options)
+      document.getElementById('price').textContent = totalValue
+  }  
+  
 
 </script>
 </body>
