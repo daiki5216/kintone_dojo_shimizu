@@ -66,15 +66,15 @@ header h2 {
       standardPrice+=options['upDisc']
     }
     return standardPrice  
-  }
+  };
   checks[0].onclick = function() {
       const totalValue =getTotalPrice(checks,standardPrice,options)
       document.getElementById('price').textContent = totalValue
-  } 
+  }; 
   checks[1].onclick = function() {
       const totalValue =getTotalPrice(checks,standardPrice,options)
       document.getElementById('price').textContent = totalValue
-  }  
+  };  
   
 
 </script>
