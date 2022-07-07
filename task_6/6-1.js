@@ -9,7 +9,7 @@
             3:"心を動かす",
             4:"知識を増やす",
             5:"公明正大"
-        }
+        };
 
         const tableData = event.record['Table'].value
         for(let i =0;i<Object.keys(action5).length;i++){
@@ -29,10 +29,10 @@
                     }
                     
                 }
-            }
+            };
             tableData.push(columnData); 
         }
-        event.record.Table.value.shift()
+        event.record.Table.value.shift();
         return event
     });
 })();
