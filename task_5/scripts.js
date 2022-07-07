@@ -1,12 +1,9 @@
 function chageBackgroundColor(tdCategory,category){
     if (category === "製品"){
        tdCategory.classList.add("product");
-    }
-  
-    else if(category === "企業情報"){
+    }if(category === "企業情報"){
         tdCategory.classList.add("company_info");
-    } 
-    else if(category === "IR 情報"){
+    }if(category === "IR 情報"){
         tdCategory.classList.add("ir_info");
     } 
 };
@@ -19,28 +16,28 @@ function getNews(){
         })
         .then((res)=>{
             const newsDatas=res.data
-            const tbody = document.getElementById('tbody')
+            const tbody = document.getElementById('tbody');
 
             newsDatas.forEach((row) => {
-                const tr = document.createElement('tr')
-                const tdDay = document.createElement('td')
-                const tdCategory = document.createElement('td')
-                const tdContent = document.createElement('td')
+                const tr = document.createElement('tr');
+                const tdDay = document.createElement('td');
+                const tdCategory = document.createElement('td');
+                const tdContent = document.createElement('td');
 
                 tdDay.textContent = row.day.value
 
                 tdCategory.textContent = row.category.value
-                chageBackgroundColor(tdCategory, row.category.value)
+                chageBackgroundColor(tdCategory, row.category.value);
 
                 tdContent.innerHTML=`<a href=${row.url.value} target=${row.target.value}>${row.content.value}</a>`
 
-                tr.appendChild(tdDay)
-                tr.appendChild(tdCategory)
-                tr.appendChild(tdContent)
-                tbody.appendChild(tr)
+                tr.appendChild(tdDay);
+                tr.appendChild(tdCategory);
+                tr.appendChild(tdContent);
+                tbody.appendChild(tr);
 
             });
-        })
+        });
 };
 
 getNews();
