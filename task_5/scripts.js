@@ -1,14 +1,4 @@
-function chageBackgroundColor(tdCategory,category){
-    if (category === "製品"){
-       tdCategory.classList.add("product");
-    }if(category === "企業情報"){
-        tdCategory.classList.add("company_info");
-    }if(category === "IR 情報"){
-        tdCategory.classList.add("ir_info");
-    } 
-};
-
-function getNews(){
+const getNews =()=>{
     axios.get("https://54o76ppvn8.execute-api.ap-northeast-1.amazonaws.com/prod/bb-dojo",{
         params:{
             id:'dojo',
@@ -16,6 +6,7 @@ function getNews(){
         })
         .then((res)=>{
             const newsDatas=res.data
+            console.log(newsDatas)
             const tbody = document.getElementById('tbody');
 
             newsDatas.forEach((row) => {
@@ -27,7 +18,7 @@ function getNews(){
                 tdDay.textContent = row.day.value
 
                 tdCategory.textContent = row.category.value
-                chageBackgroundColor(tdCategory, row.category.value);
+                tdCategory.setAttribute('class',`${row.label.value}`)
 
                 tdContent.innerHTML=`<a href=${row.url.value} target=${row.target.value}>${row.content.value}</a>`
 
