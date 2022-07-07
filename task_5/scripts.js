@@ -1,13 +1,13 @@
-function chageBackgroundColor(category_num,category){
+function chageBackgroundColor(tdCategory,category){
     if (category === "製品"){
-        document.getElementById(category_num+'-category').classList.add("product");
+       tdCategory.classList.add("product");
     }
   
     else if(category === "企業情報"){
-        document.getElementById(category_num+'-category').classList.add("company_info");
+        tdCategory.classList.add("company_info");
     } 
     else if(category === "IR 情報"){
-        document.getElementById(category_num+'-category').classList.add("ir_info");
+        tdCategory.classList.add("ir_info");
     } 
 };
 
@@ -19,44 +19,27 @@ function getNews(){
         })
         .then((res)=>{
             const newsDatas=res.data
-            console.log(res.data)
-            const nums =newsDatas.length
             const tbody = document.getElementById('tbody')
 
-            for (let i =0; i<nums;i++){                
+            newsDatas.forEach((row) => {
                 const tr = document.createElement('tr')
                 const tdDay = document.createElement('td')
                 const tdCategory = document.createElement('td')
                 const tdContent = document.createElement('td')
 
-                const tdDayIdName = i+'-day'
-                const tdCategoryIdName = i+'-category'
-                const tdContentIdName = i+'-content'
-            
+                tdDay.textContent = row.day.value
+
+                tdCategory.textContent = row.category.value
+                chageBackgroundColor(tdCategory, row.category.value)
+
+                tdContent.innerHTML=`<a href=${row.url.value} target=${row.target.value}>${row.content.value}</a>`
+
                 tr.appendChild(tdDay)
                 tr.appendChild(tdCategory)
                 tr.appendChild(tdContent)
                 tbody.appendChild(tr)
 
-                tdDay.setAttribute("id", tdDayIdName);
-                tdCategory.setAttribute("id", tdCategoryIdName);
-                tdContent.setAttribute("id", tdContentIdName);
-
-            }
-
-            for (let i =0;i<nums;i++){
-               //res.dataの値を入れていく処理↓↓
-                const i_datas = res.data[i]
-                document.getElementById(i+'-day').textContent= i_datas.day.value
-
-                const i_category = document.getElementById(i+'-category')
-                i_category.textContent= i_datas.category.value
-                chageBackgroundColor(i,i_category.textContent)
-                
-                const i_content = document.getElementById(i+'-content')
-                i_content.innerHTML=`<a href=${i_datas.url.value} target=${i_datas.target.value}>${i_datas.content.value}</a>`
-
-            }
+            });
         })
 };
 
