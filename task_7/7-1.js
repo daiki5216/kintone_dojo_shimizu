@@ -27,7 +27,7 @@
 
 
         const product = event.record['サイボウズ製品'].value
-        const EditedProductName = products[product]
+        const editedProductName = products[product]
 
         const manageNum = event.record['管理番号'].value
 
