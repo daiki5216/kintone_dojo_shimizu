@@ -1,7 +1,8 @@
 (() => {
     'use strict';
-    const action5 ={
-        value:{
+
+    kintone.events.on('app.record.create.show', (event) => {
+        const action5 ={
             0:"あくなき探求",
             1:"不屈の心体",
             2:"理想への共感",
@@ -9,17 +10,14 @@
             4:"知識を増やす",
             5:"公明正大"
         }
-    }
 
-    kintone.events.on('app.record.create.show', (event) => {
-        event.record.Table.value[0].value['Action5'].value=action5.value[0] 
         const tableData = event.record['Table'].value
-        for(let i =1;i<=5;i++){
-            let columnData={
+        for(let i =0;i<Object.keys(action5).length;i++){
+            const columnData={
                 value:{
                     "Action5":{
                         type:"DROP_DOWN",
-                        value:""
+                        value:action5[i]
                     },
                     "状況":{
                         type:"CHECK_BOX",
@@ -32,10 +30,9 @@
                     
                 }
             }
-            tableData.push(columnData);
-            event.record.Table.value[i].value['Action5'].value=action5.value[i]          
+            tableData.push(columnData); 
         }
-        
+        event.record.Table.value.shift()
         return event
     });
 })();
