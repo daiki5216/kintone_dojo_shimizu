@@ -6,7 +6,7 @@
     const params = {
         "app":appId
     };
-    return   kintone.api(kintone.api.url('/k/v1/app/form/fields.json', true), 'GET', params).then((resp) => {
+    return kintone.api(kintone.api.url('/k/v1/app/form/fields.json', true), 'GET', params).then((resp) => {
       const optionOfAction5 = resp.properties.Table.fields.Action5.options;
       const sortedOptions = Object.keys(optionOfAction5).map(function(key) {
           return optionOfAction5[key];
