@@ -5,7 +5,7 @@ const getNews =()=>{
         }
         })
         .then((res)=>{
-            const newsDatas=res.data
+            const newsDatas=res.data;
             const tbody = document.getElementById('tbody');
 
             newsDatas.forEach((row) => {
