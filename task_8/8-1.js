@@ -7,7 +7,7 @@
             "app":appId
         };
         return   kintone.api(kintone.api.url('/k/v1/app/form/fields.json', true), 'GET', params).then((resp) => {
-            const optionOfAction5 = resp.properties.Table.fields.Action5.options
+            const optionOfAction5 = resp.properties.Table.fields.Action5.options;
             const sortedOptions = Object.keys(optionOfAction5).map(function(key) {
                 return optionOfAction5[key];
 
@@ -15,8 +15,8 @@
                 return (a.index < b.index) ? -1 : 1;  
             });
 
-            const tableData = event.record['Table'].value
-            for(let i =0; i<Object.keys(sortedOptions).length; i++){ //5は追加したい行の数
+            const tableData = event.record['Table'].value;
+            for(let i =0; i<Object.keys(sortedOptions).length; i++){
                 let columnData={
                     value:{
                         "Action5":{
