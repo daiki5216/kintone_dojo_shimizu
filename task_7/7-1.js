@@ -1,9 +1,9 @@
 (() => {
     'use strict';
     kintone.events.on(['app.record.create.show','app.record.edit.show'], (event) => {
-		event.record.重複禁止項目_文字列.disabled = true;
-		return event;
-	});
+		  event.record.重複禁止項目_文字列.disabled = true;
+		  return event;
+	  });
     const trigger = [
         'app.record.create.change.日付', 
         'app.record.edit.change.日付',
