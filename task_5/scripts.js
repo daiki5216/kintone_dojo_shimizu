@@ -15,9 +15,9 @@ const getNews =()=>{
                 const tdCategory = document.createElement('td');
                 const tdContent = document.createElement('td');
 
-                tdDay.textContent = row.day.value
+                tdDay.textContent = row.day.value;
 
-                tdCategory.textContent = row.category.value
+                tdCategory.textContent = row.category.value;
                 tdCategory.setAttribute('class',`${row.label.value}`)
 
                 tdContent.innerHTML=`<a href=${row.url.value} target=${row.target.value}>${row.content.value}</a>`
