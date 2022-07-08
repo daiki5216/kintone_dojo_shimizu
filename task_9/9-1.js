@@ -1,25 +1,25 @@
 (() => {
   'use strict';
       
-  kintone.events.on(['app.record.create.submit', 'app.record.edit.submit'], (event) => {
+  kintone.events.on(['app.record.create.change.日付','app.record.create.submit', 'app.record.edit.submit'], (event) => {
     const appId = kintone.app.getId();
+    const submitContent = event.record.重複禁止項目.value;
+		const query = '重複禁止項目 = "' + submitContent + '"';
+
     const params = {
         "app":appId,
+        "query":query
     };
-    return kintone.api(kintone.api.url('/k/v1/records.json',true),'GET',params).then((res)=>{
-      const allRecords = res.records;
-      const recordContentsList =[];
-      allRecords.forEach((record) => {
-          recordContentsList.push(record.重複禁止項目.value);
-      });
-      const inputData = event.record.重複禁止項目.value;
-      
-      if (recordContentsList.includes(inputData)){
-        const checkOverlap = confirm('レコードが重複しています。このまま保存しますか？');
-        if(!checkOverlap){
-            return false;
-        };  
-      };
+    return kintone.api(kintone.api.url('/k/v1/records.json',true),'GET',params).then((res)=>{      
+      const numberOfResult = res.records.length
+
+      if(numberOfResult===0){
+        return event
+      }
+      const result = confirm('レコードが重複しています。このまま保存しますか？')
+      if (!result){
+        return false;
+      }
       return event;
     });
     
