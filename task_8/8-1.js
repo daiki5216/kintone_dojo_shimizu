@@ -17,7 +17,7 @@
 
       const tableData = event.record['Table'].value;
       for(let i =0; i<Object.keys(sortedOptions).length; i++){
-        let columnData={
+        const columnData={
           value:{
             "Action5":{
               type:"DROP_DOWN",
