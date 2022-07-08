@@ -71,39 +71,28 @@ header h2 {
   const options = {
     'secure':250,
     'upDisc':1000
-  }
-
-  const getDropdownIndexNumber=(index)=>{
-    const getIndex = document.getElementsByClassName('slct')[index].selectedIndex+1;
-    return getIndex //プルダウンのインデックス番号を返す
   };
-  
-  const totalPrice =(options) =>{
+
+  const getDropdownIndex=(index)=>{
+    const getIndex = document.getElementsByClassName('slct')[index].value;
+    return getIndex; 
+  };
+
+  const totalPrice =(standardPrice,options) =>{
     const checks = document.getElementsByClassName("chk");
-    let addPrice =0 //追加料金の0円とする
-
-    if(checks[0].checked && !checks[1].checked){
-      const i_0= getDropdownIndexNumber(0);
-      addPrice = options['secure']*i_0
+    if(checks[0].checked){
+      standardPrice+= options['secure']*getDropdownIndex(0);
     }
-    else if(!checks[0].checked && checks[1].checked){
-      const i_1= getDropdownIndexNumber(1);
-      addPrice = options['upDisc']*i_1
+    if(checks[1].checked){
+      standardPrice+= options['upDisc']*getDropdownIndex(1);;
     }
-    else if (checks[0].checked&&checks[1].checked){
-      const i_0= getDropdownIndexNumber(0);
-      const i_1= getDropdownIndexNumber(1);
-      addPrice = (options['secure']*i_0)+(options['upDisc']*i_1)
-    }
-    return standardPrice+addPrice
+    return standardPrice;
   };
- 
-  const btn =document.getElementById('btn')
-  //計算ボタンを押した時に、calcAmountを動作させる
+
+  const btn =document.getElementById('btn');
   btn.onclick = function(){
-    const amout = totalPrice(options);
-    document.getElementById('price').textContent=amout
-    
+    const totalValue = totalPrice(standardPrice,options);
+    document.getElementById('price').textContent=totalValue;   
   }
 
 </script>

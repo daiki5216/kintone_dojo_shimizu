@@ -55,27 +55,26 @@ header h2 {
   const options = {
     'secure':1250,
     'upDisc':1000
-  }
+  };
   const checks = document.getElementsByClassName("chk");
 
   const getTotalPrice = (checks,standardPrice,options)=>{   
     if(checks[0].checked){
-      standardPrice+=options['secure']
-    }
+      standardPrice+=options['secure'];
+    };
     if(checks[1].checked){
-      standardPrice+=options['upDisc']
-    }
-    return standardPrice  
+      standardPrice+=options['upDisc'];
+    };
+    return standardPrice;  
   };
   checks[0].onclick = function() {
-      const totalValue =getTotalPrice(checks,standardPrice,options)
-      document.getElementById('price').textContent = totalValue
+    const totalValue =getTotalPrice(checks,standardPrice,options);
+    document.getElementById('price').textContent = totalValue;
   }; 
   checks[1].onclick = function() {
-      const totalValue =getTotalPrice(checks,standardPrice,options)
-      document.getElementById('price').textContent = totalValue
+    const totalValue =getTotalPrice(checks,standardPrice,options);
+    document.getElementById('price').textContent = totalValue;
   };  
-  
 
 </script>
 </body>
