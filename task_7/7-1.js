@@ -23,7 +23,7 @@
     kintone.events.on(trigger, (event) => {
         event.record['重複禁止項目_文字列']['disabled'] = true;
         const day = event.record['日付'].value;
-        const Editedday = dateFns.format(day, 'YYYYMMDD');
+        const editedDay = dateFns.format(day, 'YYYYMMDD');
 
 
         const product = event.record['サイボウズ製品'].value;
