@@ -6,7 +6,6 @@ const getNews =()=>{
         })
         .then((res)=>{
             const newsDatas=res.data
-            console.log(newsDatas)
             const tbody = document.getElementById('tbody');
 
             newsDatas.forEach((row) => {
