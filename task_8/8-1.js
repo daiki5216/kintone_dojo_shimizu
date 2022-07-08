@@ -8,20 +8,18 @@
     };
     return kintone.api(kintone.api.url('/k/v1/app/form/fields.json', true), 'GET', params).then((resp) => {
       const optionOfAction5 = resp.properties.Table.fields.Action5.options;
-      const sortedOptions = Object.keys(optionOfAction5).map(function(key) {
-          return optionOfAction5[key];
-
-      }).sort(function(a, b) {
-          return (a.index < b.index) ? -1 : 1;  
+      const sortedOptions = [];
+      Object.keys(optionOfAction5).forEach((option)=>{
+        sortedOptions[optionOfAction5[option].index] = option
       });
 
       const tableData = event.record['Table'].value;
-      for(let i =0; i<Object.keys(sortedOptions).length; i++){
+      sortedOptions.forEach((row) => {
         const columnData={
           value:{
             "Action5":{
               type:"DROP_DOWN",
-              value:sortedOptions[i].label
+              value:row
             },
             "状況":{
               type:"CHECK_BOX",
@@ -34,8 +32,9 @@
               
           }
         };
-        tableData.push(columnData);       
-      };
+        tableData.push(columnData); 
+      });
+
       event.record.Table.value.shift();
       return event;
     });       
