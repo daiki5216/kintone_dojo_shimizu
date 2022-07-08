@@ -27,11 +27,11 @@
 
 
         const product = event.record['サイボウズ製品'].value;
-        const EditedProductName = products[product];
+        const editedProductName = products[product];
 
         const manageNum = event.record['管理番号'].value;
 
-        const inputData = Editedday+'-'+EditedProductName+'-'+manageNum;
+        const inputData = editedDay+'-'+editedProductName+'-'+manageNum;
 
         event.record['重複禁止項目_文字列'].value = inputData;
         return event;
