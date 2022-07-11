@@ -81,10 +81,10 @@ header h2 {
   const totalPrice =(standardPrice,options) =>{
     const checks = document.getElementsByClassName("chk");
     if(checks[0].checked){
-      standardPrice+= options['secure']*getDropdownIndex(0);
+      standardPrice+= options['secure']*getDropdownValue(0);
     }
     if(checks[1].checked){
-      standardPrice+= options['upDisc']*getDropdownIndex(1);;
+      standardPrice+= options['upDisc']*getDropdownValue(1);;
     }
     return standardPrice;
   };

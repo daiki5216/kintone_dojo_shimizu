@@ -67,11 +67,11 @@ header h2 {
     };
     return standardPrice;  
   };
-  checks[0].onclick = function() {
+  checks[0].onclick = () => {
     const totalValue =getTotalPrice(checks,standardPrice,options);
     document.getElementById('price').textContent = totalValue;
   }; 
-  checks[1].onclick = function() {
+  checks[1].onclick = () => {
     const totalValue =getTotalPrice(checks,standardPrice,options);
     document.getElementById('price').textContent = totalValue;
   };  
