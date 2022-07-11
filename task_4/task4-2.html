@@ -90,7 +90,7 @@ header h2 {
   };
 
   const btn =document.getElementById('btn');
-  btn.onclick = function(){
+  btn.onclick = () => {
     const totalValue = totalPrice(standardPrice,options);
     document.getElementById('price').textContent=totalValue;   
   }
