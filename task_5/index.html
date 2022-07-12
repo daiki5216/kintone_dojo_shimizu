@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dojo課題</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+header {
+  background-color: #1aaedb;
+  border-bottom: #ead963 6px solid;
+}
+.container {
+  padding: 16px;
+  padding-left: 120px;
+}
+header h1,
+header h2 {
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+}
+header h1 {
+  padding: 30px 0 5px 0;
+  font-size: 24px;
+  border-bottom: 1px dotted #fff;
+  font-weight: 500;
+}
+header h2 {
+  padding: 6px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  padding: 4px 8px;
+  border: 1px solid #000000;
+}
+tr#allFile {
+  color: #000;
+  background:#8fe5ff;
+}
+li {
+    margin-top:5px;
+}
+.product{
+  background-color: #83cb65;
+  color:white;
+}
+.company{
+  background-color: #1a7bdb;
+  color:white;
+}
+.ir{
+  background-color: #e07469;
+  color:white;
+}
+
+
+</style>
+</head>
+<body>
+<script src="https://js.cybozu.com/axios/v0.27.2/axios.min.js"></script>
+<header>
+  <div class="container">
+    <h1>kintone dojo</h1>
+    <h2>JavaScript課題②</h2>
+  </div>
+</header>
+<main class="container">
+  <h1>Cybozu News</h1>
+  <h2>最新のニュース</h2>
+  <table>
+    <thead>
+      <tr id="allFile">
+        <td>日付</td>
+        <td>カテゴリ</td>
+        <td>内容</td>     
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+</table>
+</main>
+<script>
+
+
+</script>
+<script src="./scripts.js"></script>
+</body>
+</html> 
